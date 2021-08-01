@@ -25,31 +25,31 @@ import android.graphics.Bitmap;
  * @author huangyz0918 (huangyz0918@gmail.com)
  */
 public class DetectionReturnValue {
-
+    
     private Bitmap watermarkBitmap;
     private String watermarkString;
-
+    
     public DetectionReturnValue() {
-
+    
     }
-
+    
     public DetectionReturnValue(Bitmap watermarkBitmap, String watermarkString) {
         this.watermarkBitmap = watermarkBitmap;
         this.watermarkString = watermarkString;
     }
-
+    
     public Bitmap getWatermarkBitmap() {
         return watermarkBitmap;
     }
-
+    
     protected void setWatermarkBitmap(Bitmap watermarkBitmap) {
         this.watermarkBitmap = watermarkBitmap;
     }
-
+    
     public String getWatermarkString() {
         return watermarkString;
     }
-
+    
     protected void setWatermarkString(String watermarkString) {
         this.watermarkString = watermarkString;
     }

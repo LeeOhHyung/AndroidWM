@@ -25,8 +25,8 @@ import com.watermark.androidwm.task.DetectionReturnValue;
  * @author huangyz0918 (huangyz0918@gmail.com)
  */
 public interface DetectFinishListener {
-
+    
     void onSuccess(DetectionReturnValue returnValue);
-
+    
     void onFailure(String message);
 }

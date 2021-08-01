@@ -42,7 +42,7 @@ public class WatermarkImage {
     private double size = 0.2;
     // set the default values for the position.
     private WatermarkPosition position = new WatermarkPosition(0, 0, 0);
-
+    
     /**
      * Constructors for WatermarkImage.
      * since we use the mobile to calculate the image, the image cannot be to large,
@@ -51,53 +51,53 @@ public class WatermarkImage {
     public WatermarkImage(Bitmap image) {
         this.image = resizeBitmap(image, MAX_IMAGE_SIZE);
     }
-
+    
     public WatermarkImage(Context context, @DrawableRes int imageDrawable, WatermarkPosition position) {
         this.imageDrawable = imageDrawable;
         this.position = position;
         this.context = context;
         this.image = getBitmapFromDrawable(imageDrawable);
     }
-
+    
     public WatermarkImage(Context context, @DrawableRes int imageDrawable) {
         this.imageDrawable = imageDrawable;
         this.context = context;
         this.image = getBitmapFromDrawable(imageDrawable);
     }
-
+    
     public WatermarkImage(Bitmap image, WatermarkPosition position) {
         this.image = resizeBitmap(image, MAX_IMAGE_SIZE);
         this.position = position;
     }
-
+    
     public WatermarkImage(ImageView imageView) {
         watermarkFromImageView(imageView);
     }
-
+    
     /**
      * Getters and Setters for those attrs.
      */
     public Bitmap getImage() {
         return image;
     }
-
+    
     public int getAlpha() {
         return alpha;
     }
-
+    
     public WatermarkPosition getPosition() {
         return position;
     }
-
+    
     public WatermarkImage setPosition(WatermarkPosition position) {
         this.position = position;
         return this;
     }
-
+    
     public double getSize() {
         return size;
     }
-
+    
     /**
      * @param size can be set to 0-1 as the proportion of
      *             background image.
@@ -106,31 +106,31 @@ public class WatermarkImage {
         this.size = size;
         return this;
     }
-
+    
     public int getImageDrawable() {
         return imageDrawable;
     }
-
+    
     public WatermarkImage setImageDrawable(@DrawableRes int imageDrawable) {
         this.imageDrawable = imageDrawable;
         return this;
     }
-
+    
     public WatermarkImage setPositionX(@FloatRange(from = 0, to = 1) double x) {
         this.position.setPositionX(x);
         return this;
     }
-
+    
     public WatermarkImage setPositionY(@FloatRange(from = 0, to = 1) double y) {
         this.position.setPositionY(y);
         return this;
     }
-
+    
     public WatermarkImage setRotation(double rotation) {
         this.position.setRotation(rotation);
         return this;
     }
-
+    
     /**
      * @param imageAlpha can be set to 0-255.
      */
@@ -138,7 +138,7 @@ public class WatermarkImage {
         this.alpha = imageAlpha;
         return this;
     }
-
+    
     /**
      * load a bitmap as watermark image from a ImageView.
      *
@@ -150,9 +150,9 @@ public class WatermarkImage {
         // set the limitation of input bitmap.
         this.image = resizeBitmap(drawable.getBitmap(), MAX_IMAGE_SIZE);
     }
-
+    
     private Bitmap getBitmapFromDrawable(@DrawableRes int imageDrawable) {
         return resizeBitmap(BitmapFactory.decodeResource(context.getResources(),
-                imageDrawable), MAX_IMAGE_SIZE);
+            imageDrawable), MAX_IMAGE_SIZE);
     }
 }

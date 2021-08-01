@@ -16,6 +16,9 @@
  */
 package com.watermark.androidwm;
 
+import static com.watermark.androidwm.utils.BitmapUtils.resizeBitmap;
+import static com.watermark.androidwm.utils.Constant.MAX_IMAGE_SIZE;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -31,9 +34,6 @@ import com.watermark.androidwm.listener.BuildFinishListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.watermark.androidwm.utils.BitmapUtils.resizeBitmap;
-import static com.watermark.androidwm.utils.Constant.MAX_IMAGE_SIZE;
 
 /**
  * A builder class for setting default structural classes for watermark to use.

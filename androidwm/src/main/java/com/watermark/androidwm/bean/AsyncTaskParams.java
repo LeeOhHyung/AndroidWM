@@ -30,54 +30,54 @@ public class AsyncTaskParams {
     private WatermarkText watermarkText;
     private Bitmap watermarkImg;
     private Context context;
-
+    
     public AsyncTaskParams(Context context, Bitmap backgroundImg, WatermarkText watermarkText, Bitmap watermarkImg) {
         this.backgroundImg = backgroundImg;
         this.watermarkText = watermarkText;
         this.watermarkImg = watermarkImg;
     }
-
+    
     public AsyncTaskParams(Context context, Bitmap backgroundImg, Bitmap watermarkImg) {
         this.backgroundImg = backgroundImg;
         this.watermarkImg = watermarkImg;
     }
-
+    
     public AsyncTaskParams(Context context, Bitmap backgroundImg, WatermarkText watermarkText) {
         this.backgroundImg = backgroundImg;
         this.watermarkText = watermarkText;
     }
-
+    
     /**
      * Getters and Setters for {@link AsyncTaskParams}.
      */
     public Bitmap getBackgroundImg() {
         return backgroundImg;
     }
-
+    
     public void setBackgroundImg(Bitmap backgroundImg) {
         this.backgroundImg = backgroundImg;
     }
-
+    
     public WatermarkText getWatermarkText() {
         return watermarkText;
     }
-
+    
     public void setWatermarkText(WatermarkText watermarkText) {
         this.watermarkText = watermarkText;
     }
-
+    
     public Bitmap getWatermarkImg() {
         return watermarkImg;
     }
-
+    
     public void setWatermarkImg(Bitmap watermarkImg) {
         this.watermarkImg = watermarkImg;
     }
-
+    
     public Context getContext() {
         return context;
     }
-
+    
     public void setContext(Context context) {
         this.context = context;
     }

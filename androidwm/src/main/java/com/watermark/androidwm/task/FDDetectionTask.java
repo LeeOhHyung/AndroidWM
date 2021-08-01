@@ -39,39 +39,39 @@ import static com.watermark.androidwm.utils.StringUtils.copyFromIntArray;
  */
 @SuppressWarnings("PMD")
 public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValue> {
-
+    
     private DetectFinishListener listener;
-
+    
     public FDDetectionTask(DetectFinishListener listener) {
         this.listener = listener;
     }
-
+    
     @Override
     protected DetectionReturnValue doInBackground(Bitmap... bitmaps) {
         Bitmap markedBitmap = bitmaps[0];
         DetectionReturnValue resultValue = new DetectionReturnValue();
-
+        
         if (markedBitmap == null) {
             listener.onFailure(ERROR_BITMAP_NULL);
             return null;
         }
-
+        
         if (markedBitmap.getWidth() > MAX_IMAGE_SIZE || markedBitmap.getHeight() > MAX_IMAGE_SIZE) {
             listener.onFailure(WARNING_BIG_IMAGE);
             return null;
         }
-
+        
         int[] pixels = getBitmapPixels(markedBitmap);
-
+        
         // divide and conquer
         if (pixels.length < CHUNK_SIZE) {
             int[] watermarkRGB = pixel2ARGBArray(pixels);
             double[] watermarkArray = copyFromIntArray(watermarkRGB);
             FastDctFft.transform(watermarkArray);
-
+            
             //TODO: do some operations with colorTempArray.
-
-
+            
+            
         } else {
             int numOfChunks = (int) Math.ceil((double) pixels.length / CHUNK_SIZE);
             for (int i = 0; i < numOfChunks; i++) {
@@ -81,9 +81,9 @@ public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValu
                 System.arraycopy(pixels, start, temp, 0, length);
                 double[] colorTempArray = copyFromIntArray(pixel2ARGBArray(temp));
                 FastDctFft.transform(colorTempArray);
-
+                
                 //TODO: do some operations with colorTempArray.
-
+                
             }
         }
 
@@ -99,20 +99,20 @@ public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValu
             resultString = binaryToString(binaryString);
             resultValue.setWatermarkBitmap(BitmapUtils.stringToBitmap(resultString));
         }*/
-
+        
         return resultValue;
     }
-
+    
     @Override
     protected void onPostExecute(DetectionReturnValue detectionReturnValue) {
         if (detectionReturnValue == null) {
             listener.onFailure(ERROR_DETECT_FAILED);
             return;
         }
-
+        
         if (detectionReturnValue.getWatermarkString() != null &&
-                !"".equals(detectionReturnValue.getWatermarkString()) ||
-                detectionReturnValue.getWatermarkBitmap() != null) {
+            !"".equals(detectionReturnValue.getWatermarkString()) ||
+            detectionReturnValue.getWatermarkBitmap() != null) {
             listener.onSuccess(detectionReturnValue);
         } else {
             listener.onFailure(ERROR_DETECT_FAILED);

@@ -51,7 +51,7 @@ import timber.log.Timber;
  * @author huangyz0918
  */
 public class BitmapUtils {
-
+    
     /**
      * build a bitmap from a text.
      *
@@ -61,49 +61,49 @@ public class BitmapUtils {
         TextPaint watermarkPaint = new TextPaint();
         watermarkPaint.setColor(watermarkText.getTextColor());
         watermarkPaint.setStyle(watermarkText.getTextStyle());
-
+        
         if (watermarkText.getTextAlpha() >= 0 && watermarkText.getTextAlpha() <= 255) {
             watermarkPaint.setAlpha(watermarkText.getTextAlpha());
         }
-
+        
         float value = (float) watermarkText.getTextSize();
         int pixel = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                value, context.getResources().getDisplayMetrics());
+            value, context.getResources().getDisplayMetrics());
         watermarkPaint.setTextSize(pixel);
-
+        
         if (watermarkText.getTextShadowBlurRadius() != 0
-                || watermarkText.getTextShadowXOffset() != 0
-                || watermarkText.getTextShadowYOffset() != 0) {
+            || watermarkText.getTextShadowXOffset() != 0
+            || watermarkText.getTextShadowYOffset() != 0) {
             watermarkPaint.setShadowLayer(watermarkText.getTextShadowBlurRadius(),
-                    watermarkText.getTextShadowXOffset(),
-                    watermarkText.getTextShadowYOffset(),
-                    watermarkText.getTextShadowColor());
+                watermarkText.getTextShadowXOffset(),
+                watermarkText.getTextShadowYOffset(),
+                watermarkText.getTextShadowColor());
         }
-
+        
         if (watermarkText.getTextFont() != 0) {
             Typeface typeface = ResourcesCompat.getFont(context, watermarkText.getTextFont());
             watermarkPaint.setTypeface(typeface);
         }
-
+        
         watermarkPaint.setAntiAlias(true);
         watermarkPaint.setTextAlign(Paint.Align.LEFT);
         watermarkPaint.setStrokeWidth(5);
-
+        
         float baseline = (int) (-watermarkPaint.ascent() + 1f);
         Rect bounds = new Rect();
         watermarkPaint.getTextBounds(watermarkText.getText(),
-                0, watermarkText.getText().length(), bounds);
-
+            0, watermarkText.getText().length(), bounds);
+        
         int boundWidth = bounds.width() + 20;
         int mTextMaxWidth = (int) watermarkPaint.measureText(watermarkText.getText());
         if (boundWidth > mTextMaxWidth) {
             boundWidth = mTextMaxWidth;
         }
         StaticLayout staticLayout = new StaticLayout(watermarkText.getText(),
-                0, watermarkText.getText().length(),
-                watermarkPaint, mTextMaxWidth, android.text.Layout.Alignment.ALIGN_NORMAL, 2.0f,
-                2.0f, false);
-
+            0, watermarkText.getText().length(),
+            watermarkPaint, mTextMaxWidth, android.text.Layout.Alignment.ALIGN_NORMAL, 2.0f,
+            2.0f, false);
+        
         int lineCount = staticLayout.getLineCount();
         int height = (int) (baseline + watermarkPaint.descent() + 3) * lineCount;
         Bitmap image = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
@@ -115,7 +115,7 @@ public class BitmapUtils {
         staticLayout.draw(canvas);
         return image;
     }
-
+    
     /**
      * this method is for image resizing, we should get
      * the size from the input {@link WatermarkImage}
@@ -131,9 +131,9 @@ public class BitmapUtils {
         Matrix matrix = new Matrix();
         matrix.postScale(scale, scale);
         return Bitmap.createBitmap(watermarkImg, 0, 0,
-                bitmapWidth, bitmapHeight, matrix, true);
+            bitmapWidth, bitmapHeight, matrix, true);
     }
-
+    
     /**
      * this method is for image resizing, used in invisible watermark
      * creating progress. To make the progress faster, we should do
@@ -145,15 +145,15 @@ public class BitmapUtils {
      */
     public static Bitmap resizeBitmap(Bitmap inputBitmap, int maxImageSize) {
         float ratio = Math.min(
-                (float) maxImageSize / inputBitmap.getWidth(),
-                (float) maxImageSize / inputBitmap.getHeight());
+            (float) maxImageSize / inputBitmap.getWidth(),
+            (float) maxImageSize / inputBitmap.getHeight());
         int width = Math.round(ratio * inputBitmap.getWidth());
         int height = Math.round(ratio * inputBitmap.getHeight());
-
+        
         return Bitmap.createScaledBitmap(inputBitmap, width,
-                height, true);
+            height, true);
     }
-
+    
     /**
      * Convert a Bitmap to a String.
      */
@@ -163,7 +163,7 @@ public class BitmapUtils {
         byte[] b = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(b, Base64.DEFAULT);
     }
-
+    
     /**
      * Convert a String to a Bitmap.
      *
@@ -178,7 +178,7 @@ public class BitmapUtils {
             return null;
         }
     }
-
+    
     /**
      * Saving a bitmap instance into local PNG.
      */
@@ -187,10 +187,10 @@ public class BitmapUtils {
         if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
             Timber.e("SD card is not available/writable right now.");
         }
-
+        
         @SuppressLint("SimpleDateFormat") String timeStamp =
-                new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.US).format(Calendar.getInstance().getTime());
-
+            new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.US).format(Calendar.getInstance().getTime());
+        
         FileOutputStream out = null;
         try {
             if (withTime) {
@@ -212,18 +212,18 @@ public class BitmapUtils {
             }
         }
     }
-
+    
     /**
      * convert the background bitmap into pixel array.
      */
     public static int[] getBitmapPixels(Bitmap inputBitmap) {
         int[] backgroundPixels = new int[inputBitmap.getWidth() * inputBitmap.getHeight()];
         inputBitmap.getPixels(backgroundPixels, 0, inputBitmap.getWidth(), 0, 0,
-                inputBitmap.getWidth(), inputBitmap.getHeight());
+            inputBitmap.getWidth(), inputBitmap.getHeight());
         return backgroundPixels;
     }
-
-
+    
+    
     /**
      * Bitmap to Pixels then converting it to an ARGB int array.
      */
@@ -235,7 +235,7 @@ public class BitmapUtils {
             bitmapArray[4 * i + 2] = Color.green(inputPixels[i]);
             bitmapArray[4 * i + 3] = Color.blue(inputPixels[i]);
         }
-
+        
         return bitmapArray;
     }
 }
