@@ -41,11 +41,11 @@ import java.util.List;
  * @author huangyz0918 (huangyz0918@gmail.com)
  */
 public final class WatermarkBuilder {
-    private Context context;
+    private final Context context;
     private Bitmap backgroundImg;
     private boolean isTileMode = false;
     private boolean isLSB = false;
-    private boolean resizeBackgroundImg;
+    private final boolean resizeBackgroundImg;
     private BuildFinishListener<Bitmap> buildFinishListener = null;
 
     private WatermarkImage watermarkImage;

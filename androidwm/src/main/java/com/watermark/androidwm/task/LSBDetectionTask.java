@@ -45,8 +45,9 @@ import static com.watermark.androidwm.utils.StringUtils.replaceNinesJ;
  */
 public class LSBDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValue> {
 
-    private DetectFinishListener listener;
+    private final DetectFinishListener listener;
 
+    @SuppressWarnings("deprecation")
     public LSBDetectionTask(DetectFinishListener listener) {
         this.listener = listener;
     }

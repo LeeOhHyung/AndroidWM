@@ -49,8 +49,9 @@ import static com.watermark.androidwm.utils.StringUtils.stringToIntArray;
  */
 public class LSBWatermarkTask extends AsyncTask<AsyncTaskParams, Void, Bitmap> {
 
-    private BuildFinishListener<Bitmap> listener;
+    private final BuildFinishListener<Bitmap> listener;
 
+    @SuppressWarnings("deprecation")
     public LSBWatermarkTask(BuildFinishListener<Bitmap> callback) {
         this.listener = callback;
     }

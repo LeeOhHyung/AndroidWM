@@ -44,8 +44,9 @@ import static com.watermark.androidwm.utils.StringUtils.copyFromIntArray;
  */
 public class FDWatermarkTask extends AsyncTask<AsyncTaskParams, Void, Bitmap> {
 
-    private BuildFinishListener<Bitmap> listener;
+    private final BuildFinishListener<Bitmap> listener;
 
+    @SuppressWarnings("deprecation")
     public FDWatermarkTask(BuildFinishListener<Bitmap> callback) {
         this.listener = callback;
     }
@@ -113,13 +114,6 @@ public class FDWatermarkTask extends AsyncTask<AsyncTaskParams, Void, Bitmap> {
                     System.arraycopy(backgroundPixels, start, temp, 0, length);
                     double[] colorTempD = copyFromIntArray(pixel2ARGBArray(temp));
                     FastDctFft.transform(colorTempD);
-
-//                    for (int j = 0; j < length; j++) {
-//                        colorTempD[4 * j] = colorTempD[4 * j] + watermarkColorArray[j];
-//                        colorTempD[4 * j + 1] = colorTempD[4 * j + 1] + watermarkColorArray[j];
-//                        colorTempD[4 * j + 2] = colorTempD[4 * j + 2] + watermarkColorArray[j];
-//                        colorTempD[4 * j + 3] = colorTempD[4 * j + 3] + watermarkColorArray[j];
-//                    }
 
                     double enhanceNum = 1;
 

@@ -47,16 +47,16 @@ import static com.watermark.androidwm.utils.BitmapUtils.textAsBitmap;
  * @author huangyz0918 (huangyz0918@gmail.com)
  */
 public class Watermark {
-    private WatermarkText watermarkText;
-    private WatermarkImage watermarkImg;
-    private Bitmap backgroundImg;
-    private Context context;
+    private final WatermarkText watermarkText;
+    private final WatermarkImage watermarkImg;
+    private final Bitmap backgroundImg;
+    private final Context context;
     private Bitmap outputImage;
     private Bitmap canvasBitmap;
-    private boolean isTileMode;
-    private boolean isInvisible;
-    private boolean isLSB;
-    private BuildFinishListener<Bitmap> buildFinishListener;
+    private final boolean isTileMode;
+    private final boolean isInvisible;
+    private final boolean isLSB;
+    private final BuildFinishListener<Bitmap> buildFinishListener;
     
     /**
      * Constructors for WatermarkImage

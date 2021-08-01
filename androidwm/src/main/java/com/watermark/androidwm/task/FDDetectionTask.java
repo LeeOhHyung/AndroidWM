@@ -40,8 +40,9 @@ import static com.watermark.androidwm.utils.StringUtils.copyFromIntArray;
 @SuppressWarnings("PMD")
 public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValue> {
     
-    private DetectFinishListener listener;
+    private final DetectFinishListener listener;
     
+    @SuppressWarnings("deprecation")
     public FDDetectionTask(DetectFinishListener listener) {
         this.listener = listener;
     }
@@ -68,10 +69,6 @@ public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValu
             int[] watermarkRGB = pixel2ARGBArray(pixels);
             double[] watermarkArray = copyFromIntArray(watermarkRGB);
             FastDctFft.transform(watermarkArray);
-            
-            //TODO: do some operations with colorTempArray.
-            
-            
         } else {
             int numOfChunks = (int) Math.ceil((double) pixels.length / CHUNK_SIZE);
             for (int i = 0; i < numOfChunks; i++) {
@@ -81,24 +78,8 @@ public class FDDetectionTask extends AsyncTask<Bitmap, Void, DetectionReturnValu
                 System.arraycopy(pixels, start, temp, 0, length);
                 double[] colorTempArray = copyFromIntArray(pixel2ARGBArray(temp));
                 FastDctFft.transform(colorTempArray);
-                
-                //TODO: do some operations with colorTempArray.
-                
             }
         }
-
-/*        TODO: new detection operations will replace this block.
-        String resultString;
-
-        if (binaryString.contains(LSB_TEXT_PREFIX_FLAG) && binaryString.contains(LSB_TEXT_SUFFIX_FLAG)) {
-            resultString = getBetweenStrings(binaryString, true, listener);
-            resultString = binaryToString(resultString);
-            resultValue.setWatermarkString(resultString);
-        } else if (binaryString.contains(LSB_IMG_PREFIX_FLAG) && binaryString.contains(LSB_IMG_SUFFIX_FLAG)) {
-            binaryString = getBetweenStrings(binaryString, false, listener);
-            resultString = binaryToString(binaryString);
-            resultValue.setWatermarkBitmap(BitmapUtils.stringToBitmap(resultString));
-        }*/
         
         return resultValue;
     }

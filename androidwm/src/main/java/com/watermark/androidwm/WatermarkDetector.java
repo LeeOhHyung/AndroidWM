@@ -31,8 +31,8 @@ import com.watermark.androidwm.task.LSBDetectionTask;
  * @author huangyz0918 (huangyz0918@gmail.com)
  */
 public final class WatermarkDetector {
-    private Bitmap imageWithWatermark;
-    private boolean isLSB;
+    private final Bitmap imageWithWatermark;
+    private final boolean isLSB;
 
     private WatermarkDetector(
             @NonNull Bitmap imageWithWatermark,
