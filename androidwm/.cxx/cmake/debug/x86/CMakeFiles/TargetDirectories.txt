@@ -1,0 +1,3 @@
+/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86/CMakeFiles/Watermark.dir

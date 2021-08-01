@@ -1,0 +1,40 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/iohyeong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/iohyeong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "Watermark-Debug-x86": {
+      "buildCommandComponents": [
+        "/Users/iohyeong/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/.cxx/cmake/debug/x86",
+        "Watermark"
+      ],
+      "buildType": "debug",
+      "abi": "x86",
+      "artifactName": "Watermark",
+      "output": "/Users/iohyeong/Desktop/andorid-watermark/andorid-watermark/androidwm/build/intermediates/cmake/debug/obj/x86/libWatermark.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
